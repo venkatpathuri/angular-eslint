@@ -1,0 +1,4 @@
+# Ignore build and generated files
+dist
+node_modules
+coverage

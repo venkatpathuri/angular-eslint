@@ -1,0 +1,126 @@
+{
+    "root": true,
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:prettier/recommended"
+            ],
+            "parserOptions": {
+                "project": [
+                    "tsconfig.eslint.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "rules": {
+                "no-console": [
+                    "warn",
+                    {
+                        "allow": [
+                            "error"
+                        ]
+                    }
+                ], //Disallows console.log usage.
+                "no-debugger": "warn", //Prevents accidental commits of debugger statements.
+                "eqeqeq": [
+                    "error",
+                    "always"
+                ], //Enforces strict equality (===/!==).
+                "curly": "error", //Enforces {} around blocks (prevents logical bugs).
+                "prefer-const": "error", //Requires const for variables that are never reassigned.
+                "@typescript-eslint/consistent-type-definitions": [
+                    "warn",
+                    "interface"
+                ], //definitions	Enforces consistent use of interface over type
+                "@angular-eslint/no-empty-lifecycle-method": "off", //Warns on lifecycle hooks with no logic.
+                "@angular-eslint/directive-class-suffix": [
+                    "error",
+                    {
+                        "suffixes": [
+                            "Directive"
+                        ]
+                    }
+                ], //enforce attribute selectors with prefix
+                "@angular-eslint/no-host-metadata-property": "off", // Avoid use of `host` metadata in components/directives (prefer @HostListener)
+                "@angular-eslint/prefer-on-push-component-change-detection": "off", // Encourage OnPush change detection strategy
+                "@typescript-eslint/no-inferrable-types": "warn", // Warn on explicit types that can be inferred
+                "max-lines": [
+                    "warn",
+                    {
+                        "max": 200,
+                        "skipBlankLines": true,
+                        "skipComments": true
+                    }
+                ], // Warn if lines exceed 200 characters
+                "no-duplicate-imports": "error", // Disallow duplicate imports
+                "max-depth": [
+                    "warn",
+                    3
+                ], // Limit nested blocks to 3 levels to keep code readable
+                "@angular-eslint/no-forward-ref": "off", // Discourages use of forwardRef() – often a sign of circular deps
+                "@angular-eslint/no-output-native": "error", // Prevents conflicts with native DOM events in outputs
+                "@angular-eslint/contextual-lifecycle": "warn", // Makes sure lifecycle methods are used only where valid
+                "@angular-eslint/no-pipe-impure": "error", // Prevents use of impure pipes which can lead to performance issues
+                "@typescript-eslint/no-floating-promises": "error", // Prevents unhandled promises that could lead to silent failures
+                "@typescript-eslint/prefer-optional-chain": "warn", // Enforces use of optional chaining (?.) for cleaner and safer code
+                "@typescript-eslint/prefer-nullish-coalescing": "warn", // Suggests using ?? over || where appropriate (null vs. falsy)
+                "no-unused-vars": "off", // Disabled base rule, using TS version instead
+                "@typescript-eslint/no-unused-vars": "error", // Catch unused variables to keep code clean
+                "@typescript-eslint/no-non-null-assertion": "off", // Avoid '!' operator to prevent runtime surprises               
+                "@typescript-eslint/ban-types": "off", // Warn when using discouraged types like 'Object' or 'Function'
+                "@typescript-eslint/no-empty-interface": "warn", // Warn if empty interfaces are declared unnecessarily
+                "@typescript-eslint/no-empty-function": "warn", // Avoid empty functions that do nothing—likely a mistake
+                "no-dupe-else-if": "warn", // Prevent duplicate else-if conditions for logical errors
+                "no-duplicate-case": "warn", // Catch duplicate switch cases which can cause bugs
+                "prefer-spread": "warn", // Use spread syntax instead of apply for clarity and modern style
+                "no-extra-boolean-cast": "warn", // Avoid unnecessary boolean casts, keeps code clean
+                "prefer-rest-params": "warn", // Prefer rest parameters over arguments object for clarity
+                "no-empty": "warn", // Warn about empty blocks that might be unfinished code
+                "no-setter-return": "warn", // Setters shouldn't return values, helps avoid subtle bugs
+                "no-control-regex": "warn", // Avoid control characters in regex, usually a mistake
+                "no-redeclare": "warn", // Catch redeclarations that shadow variables unintentionally
+                "no-prototype-builtins": "warn", // Avoid calling Object prototype methods directly to be safe
+                "@typescript-eslint/require-await": "warn", // Ensure async functions actually await something
+                "prefer-arrow-callback": "warn", // Prefer arrow callback functions
+                "prefer-template": "off", // Prefer template literals instead of strings concatenation
+                "@typescript-eslint/prefer-for-of": "warn", // Prefer for-of loops over classic for loops for arrays
+                "prefer-exponentiation-operator": "warn", //Prefer ** over Math.pow().
+                "no-template-curly-in-string": "warn", //Warn when template literal placeholder syntax is used in regular strings.
+                "no-loop-func": "error", // Disallow functions inside loops (often a bug)
+                "no-return-await": "off", // Disallow unnecessary return await
+                "prefer-destructuring": [
+                    "off",
+                    {
+                        "array": true,
+                        "object": true
+                    }
+                ]
+            }
+        },
+        {
+            "files": [
+                "*.component.html"
+            ],
+            "rules": {
+                "@angular-eslint/template/banana-in-box": "error", // Enforce proper [( )] two-way binding syntax
+                "@angular-eslint/template/click-events-have-key-events": "warn", // Accessibility: click handlers should have keyboard event alternatives
+                "@angular-eslint/template/no-autofocus": "warn", // Prevent autofocus usage (accessibility concerns)
+                "@angular-eslint/template/no-call-expression": "warn", // Disallow calling functions in templates (performance)
+                "@angular-eslint/template/no-template-shadow": "off", // Avoid shadowing variables in templates
+                "@angular-eslint/template/track-by-function": "warn", // Encourage trackBy function in *ngFor for performance
+                "@angular-eslint/template/alt-text": "warn", // Warn if <img> elements are missing alt attributes (accessibility)
+                "@angular-eslint/template/button-has-type": "warn", // Ensure <button> elements have type attribute (avoid unintended submit)
+                "@angular-eslint/template/role-has-required-aria": "warn", // Accessibility: check ARIA roles have required attributes
+                "@angular-eslint/template/no-inline-styles": "warn", // Disallow inline styles for maintainability
+                "@angular-eslint/template/no-dynamic-content": "warn" // prevent injection risks in templates
+            },
+            "extends": [
+                "plugin:@angular-eslint/template/recommended"
+            ]
+        }
+    ]
+}

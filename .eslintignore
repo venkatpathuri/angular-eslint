@@ -1,0 +1,25 @@
+# Ignore built files and dependencies
+dist/
+build/
+node_modules/
+
+# Ignore environment files (optional)
+src/environments/
+
+# Ignore auto-generated TypeScript files (like GraphQL types)
+src/app/generated/
+
+# Ignore test coverage output
+coverage/
+
+# Ignore specific config files or global scripts
+webpack.config.js
+karma.conf.js
+
+# Ignore all spec files (optional)
+**/*.spec.ts
+
+# Ignore these specific file
+angular.json
+package.json
+index.html
