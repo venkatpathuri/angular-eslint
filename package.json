@@ -12,7 +12,6 @@
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "lint:html-lines": "node check-html-lines.js"
-
   },
   "private": true,
   "dependencies": {
