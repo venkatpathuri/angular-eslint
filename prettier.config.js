@@ -1,4 +1,5 @@
-module.exports = {
+// prettier.config.js
+export default {
   endOfLine: "lf",
   singleQuote: true,
   semi: true,

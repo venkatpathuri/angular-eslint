@@ -1,13 +1,12 @@
-// eslint.config.cjs
+import path from 'path';
+import angularEslintPlugin from '@angular-eslint/eslint-plugin';
+import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
+import prettierPlugin from 'eslint-plugin-prettier';
+import angularTemplatePlugin from '@angular-eslint/eslint-plugin-template';
+import tsParser from '@typescript-eslint/parser';
+import templateParser from '@angular-eslint/template-parser';
 
-const path = require('path');
-const angularEslintPlugin = require('@angular-eslint/eslint-plugin');
-const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
-const prettierPlugin = require('eslint-plugin-prettier');
-const angularTemplatePlugin = require('@angular-eslint/eslint-plugin-template');
-const tsParser = require('@typescript-eslint/parser');
-
-module.exports = [
+export default [
   {
     ignores: [
       'angular.json',
@@ -20,8 +19,8 @@ module.exports = [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: [path.resolve(__dirname, 'tsconfig.eslint.json')],
-        tsconfigRootDir: __dirname,
+        project: [path.resolve(process.cwd(), 'tsconfig.eslint.json')],
+        tsconfigRootDir: process.cwd(),
         createDefaultProgram: true,
         sourceType: 'module',
       },
@@ -79,6 +78,9 @@ module.exports = [
   },
   {
     files: ['src/**/*.component.html'],
+    languageOptions: {
+      parser: templateParser,
+    },
     plugins: {
       '@angular-eslint/template': angularTemplatePlugin,
     },
