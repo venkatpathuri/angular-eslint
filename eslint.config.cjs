@@ -1,23 +1,29 @@
-import angularEslintPlugin from '@angular-eslint/eslint-plugin';
-import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
-import prettierPlugin from 'eslint-plugin-prettier';
-import angularTemplatePlugin from '@angular-eslint/eslint-plugin-template';
+// eslint.config.cjs
 
-export default [
+const path = require('path');
+const angularEslintPlugin = require('@angular-eslint/eslint-plugin');
+const typescriptEslintPlugin = require('@typescript-eslint/eslint-plugin');
+const prettierPlugin = require('eslint-plugin-prettier');
+const angularTemplatePlugin = require('@angular-eslint/eslint-plugin-template');
+const tsParser = require('@typescript-eslint/parser');
+
+module.exports = [
   {
     ignores: [
-     
       'angular.json',
       'package.json',
       'index.html',
     ],
   },
   {
-    files: ['*.ts'],
+    files: ['src/**/*.ts'],
     languageOptions: {
+      parser: tsParser,
       parserOptions: {
-        project: ['tsconfig.eslint.json'],
+        project: [path.resolve(__dirname, 'tsconfig.eslint.json')],
+        tsconfigRootDir: __dirname,
         createDefaultProgram: true,
+        sourceType: 'module',
       },
     },
     plugins: {
@@ -36,8 +42,6 @@ export default [
       '@angular-eslint/directive-class-suffix': ['error', { suffixes: ['Directive'] }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'prettier/prettier': 'error',
-
-      // Additional rules:
       'max-lines': ['warn', { max: 200, skipBlankLines: true, skipComments: true }],
       'no-duplicate-imports': 'error',
       'max-depth': ['warn', 3],
@@ -74,7 +78,7 @@ export default [
     },
   },
   {
-    files: ['*.component.html'],
+    files: ['src/**/*.component.html'],
     plugins: {
       '@angular-eslint/template': angularTemplatePlugin,
     },
@@ -84,12 +88,10 @@ export default [
       '@angular-eslint/template/no-autofocus': 'warn',
       '@angular-eslint/template/no-call-expression': 'warn',
       '@angular-eslint/template/no-template-shadow': 'off',
-      '@angular-eslint/template/track-by-function': 'warn',
       '@angular-eslint/template/alt-text': 'warn',
       '@angular-eslint/template/button-has-type': 'warn',
       '@angular-eslint/template/role-has-required-aria': 'warn',
       '@angular-eslint/template/no-inline-styles': 'warn',
-      '@angular-eslint/template/no-dynamic-content': 'warn',
     },
   },
 ];
