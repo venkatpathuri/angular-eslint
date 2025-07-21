@@ -1,12 +1,11 @@
-const { glob } = require("glob");
-const fs = require("fs").promises;
-const path = require("path");
+import { glob } from "glob";
+import { readFile } from "fs/promises";
+import path from "path";
 
-const MAX_LINES =200
+const MAX_LINES = 200;
 
 async function checkHtmlLines() {
   try {
-    
     const files = await glob("src/**/*.component.html");
 
     if (files.length === 0) {
@@ -17,7 +16,7 @@ async function checkHtmlLines() {
     let overLimitCount = 0;
 
     for (const file of files) {
-      const content = await fs.readFile(file, "utf8");
+      const content = await readFile(file, "utf8");
       const lineCount = content.split(/\r?\n/).length;
 
       if (lineCount > MAX_LINES) {
